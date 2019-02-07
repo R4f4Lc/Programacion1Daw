@@ -32,10 +32,6 @@ public class Coche extends Vehiculo{
 		this.marca = marca;
 	}
 	
-//	public void andar(double km) {
-//		setKilometrosRecorridos(km);
-//		setKilometrosTotales(km);
-//	}
 	
 	public String quemaRueda() {
 		return "Rumruuuummrurururuurummmm";
