@@ -36,37 +36,12 @@ public class Movil extends Terminal{
 		setTarifa(tarifa);
 	}
 
-//	/**
-//	 * @return the tarifa
-//	 */
-//	private String getTarifa() {
-//		return tarifa;
-//	}
-
 	/**
 	 * @param tarifa the tarifa to set
 	 */
 	private void setTarifa(String tarifa) {
 		this.tarifa = tarifa;
 	}
-	
-//	private double calculaTarifa1() {
-//		double mins = this.getSegundos()/60;
-//		double total = 0.00;
-//		if (mins == 0) 
-//			return total;
-//		
-//		if(tarifa == "rata")
-//			total += mins * 0.06;
-//			
-//		else if(tarifa == "mono")
-//			total += mins * 0.12;
-//		
-//		else if(tarifa == "bisonte")
-//			total += mins * 0.30;
-//
-//		return total;
-//	}
 	
 	/**
 	 * Calcula el precio según la tarifa y lo devuelve
