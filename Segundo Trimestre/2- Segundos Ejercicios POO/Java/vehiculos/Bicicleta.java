@@ -25,11 +25,6 @@ public class Bicicleta extends Vehiculo {
 		caballito = "no";
 	}
 
-//	public void andar(double km) {
-//		setKilometrosRecorridos(km);
-//		setKilometrosTotales(km);
-//	}
-
 	public String arre(String valor) {
 		this.caballito = valor;
 		
@@ -37,16 +32,6 @@ public class Bicicleta extends Vehiculo {
 			return "La bicicleta está haciendo el caballito";
 
 		return "La bicicleta no está haciendo el caballito";
-		
-		
-		
-		
-		
-//if (caballito == "si") {
-//			return "La bicicleta está haciendo el caballito";
-//		} else {
-//			return "La bicicleta no está haciendo el caballito";
-//		}
 	}
 
 	/* (non-Javadoc)
