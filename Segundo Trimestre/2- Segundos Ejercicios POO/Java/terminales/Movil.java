@@ -1,3 +1,5 @@
+package terminales;
+import java.text.DecimalFormat;
 /**
  * Implementa la clase Movil como subclase de Terminal (la clase del ejercicio
  * anterior que ya no hace falta modificar). Cada móvil lleva asociada una tarifa
@@ -10,8 +12,6 @@
  * 
  * @author Rafael López | RafaLpeC
  */
-package terminales;
-import java.text.DecimalFormat;
 public class Movil extends Terminal{
 	/**
 	 * Definición de formato del DecimalFormat para todos los moviles
@@ -64,7 +64,10 @@ public class Movil extends Terminal{
 		return 0;
 
 	}
-
+	
+	public void llama(Terminal t2, double segundos) {
+		setSegundos(segundos);
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

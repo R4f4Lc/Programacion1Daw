@@ -1,14 +1,10 @@
+package terminales;
+
 /**
- * Implementa la clase Terminal. Un terminal tiene asociado un número. Los 
- * terminales se pueden llamar unos a otros y el tiempo de conversación corre
- * para ambos. A continuación se proporciona el contenido del main y el resultado
- * que debe aparecer por pantalla.
+ * Prueba de ejecución de la clase Terminal
  * 
  * @author Rafael López | RafaLpeC
  */
-
-package terminales;
-
 public class PruebaTerminal {
 
 	public static void main(String[] args) {
@@ -24,7 +20,5 @@ public class PruebaTerminal {
 		System.out.println(t2);
 		System.out.println(t3);
 		System.out.println(t4);
-
 	}
-
 }

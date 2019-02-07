@@ -1,3 +1,5 @@
+package terminales;
+
 /**
  * Implementa la clase Terminal. Un terminal tiene asociado un número. Los 
  * terminales se pueden llamar unos a otros y el tiempo de conversación corre
@@ -6,9 +8,6 @@
  * 
  * @author Rafael López | RafaLpeC
  */
-
-package terminales;
-
 public class Terminal {
 	private String numero;
 	/**
@@ -45,13 +44,13 @@ public class Terminal {
 	 * Incrementa los segundos de cada terminal
 	 * @param segundos the segundos to set
 	 */
-	private void setSegundos(double segundos) {
+	void setSegundos(double segundos) {
 		this.segundos += segundos;
 	}
 	
 	public void llama(Terminal t2, double segundos) {
 		this.setSegundos(segundos);
-
+		t2.setSegundos(segundos);
 	}
 
 	/* (non-Javadoc)

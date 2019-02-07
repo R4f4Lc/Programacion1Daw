@@ -1,3 +1,5 @@
+package vehiculos;
+
 /**
  * Crea la clase Vehiculo, así como las clases Bicicleta y Coche como subclases
  * de la primera. Para la clase Vehiculo, crea los atributos de clase
@@ -9,7 +11,6 @@
  * @author Rafael López | RafaLpeC
  *
  */
-package vehiculos;
 public class Bicicleta extends Vehiculo {
 	private String caballito;
 	private String tipo;
@@ -32,6 +33,7 @@ public class Bicicleta extends Vehiculo {
 			return "La bicicleta está haciendo el caballito";
 
 		return "La bicicleta no está haciendo el caballito";
+
 	}
 
 	/* (non-Javadoc)

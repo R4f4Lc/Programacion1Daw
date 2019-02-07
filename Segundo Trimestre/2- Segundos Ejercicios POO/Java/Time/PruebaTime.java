@@ -1,3 +1,6 @@
+package time;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 /**
  * Crea la clase Tiempo con los métodos suma y resta. Los objetos de la clase Tiempo
  * son intervalos de tiempo y se crean de la forma Tiempo t = new Tiempo(1, 20,
@@ -9,9 +12,6 @@
  * 
  * @author Rafael López | RafaLpeC
  */
-package Time;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 public class PruebaTime {
 
 	public static void main(String[] args) {
@@ -37,7 +37,7 @@ public class PruebaTime {
 		total = total.minusHours(hora.getHour());
 		total = total.minusMinutes(hora.getMinute());
 		total = total.minusSeconds(hora.getSecond());
-		System.out.println(" Resta de Hora 3 y Hora 1= " +  total.format(dtf));
+		System.out.println("Resta de Hora 3 y Hora 1= " +  total.format(dtf));
 		
 	}
 

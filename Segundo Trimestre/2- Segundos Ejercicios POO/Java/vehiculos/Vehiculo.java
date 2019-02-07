@@ -1,3 +1,4 @@
+package vehiculos;
 /**
  * Crea la clase Vehiculo, así como las clases Bicicleta y Coche como subclases
  * de la primera. Para la clase Vehiculo, crea los atributos de clase
@@ -9,7 +10,6 @@
  * @author Rafael López | RafaLpeC
  *
  */
-package vehiculos;
 public class Vehiculo {
 	private static int contadorVehiculos;
 	private static double kilometrosTotales = 0;
