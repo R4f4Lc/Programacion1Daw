@@ -14,16 +14,20 @@ package terminales;
 import java.text.DecimalFormat;
 public class Movil extends Terminal{
 	/**
+	 * Definición de formato del DecimalFormat para todos los moviles
+	 */
+	private static String pattern = "###.##";
+	/**
+	 * Definición de DecimalFormat para todos los moviles
+	 */
+	private static DecimalFormat decimalFormat = new DecimalFormat(pattern);
+
+	
+	/**
 	 * Definición del atributo tarifa
 	 */
 	private String tarifa;
 	
-	/**
-	 * Definición de DecimalFormat
-	 */
-	String pattern = "###.##";
-	DecimalFormat decimalFormat = new DecimalFormat(pattern);
-
 	/**
 	 * @param tarifa
 	 */
@@ -32,12 +36,12 @@ public class Movil extends Terminal{
 		setTarifa(tarifa);
 	}
 
-	/**
-	 * @return the tarifa
-	 */
-	private String getTarifa() {
-		return tarifa;
-	}
+//	/**
+//	 * @return the tarifa
+//	 */
+//	private String getTarifa() {
+//		return tarifa;
+//	}
 
 	/**
 	 * @param tarifa the tarifa to set
@@ -46,26 +50,44 @@ public class Movil extends Terminal{
 		this.tarifa = tarifa;
 	}
 	
+//	private double calculaTarifa1() {
+//		double mins = this.getSegundos()/60;
+//		double total = 0.00;
+//		if (mins == 0) 
+//			return total;
+//		
+//		if(tarifa == "rata")
+//			total += mins * 0.06;
+//			
+//		else if(tarifa == "mono")
+//			total += mins * 0.12;
+//		
+//		else if(tarifa == "bisonte")
+//			total += mins * 0.30;
+//
+//		return total;
+//	}
+	
 	/**
 	 * Calcula el precio según la tarifa y lo devuelve
 	 * @return total;
 	 */
 	private double calculaTarifa() {
 		double mins = this.getSegundos()/60;
-		double total = 0.00;
-		if (mins == 0) 
-			return total;
 		
-		if(tarifa == "rata")
-			total += mins * 0.06;
+		if (mins == 0)
+			return 0;
+		
+		if(tarifa.equalsIgnoreCase("rata"))
+			return mins * 0.06;
 			
-		else if(tarifa == "mono")
-			total += mins * 0.12;
+		if(tarifa.equalsIgnoreCase("mono"))
+			return mins * 0.12;
 		
-		else if(tarifa == "bisonte")
-			total += mins * 0.30;
+		if(tarifa.equalsIgnoreCase("bisonte"))
+			return mins * 0.30;
+		return 0;
 
-		return total;
 	}
 
 	/* (non-Javadoc)
@@ -73,6 +95,6 @@ public class Movil extends Terminal{
 	 */
 	@Override
 	public String toString() {
-		return "Nº " + getNumero() + " - " + getSegundos() + "s de conversación - tarificados " + decimalFormat.format(calculaTarifa()) + " euros";
+		return super.toString() + " - tarificados " + decimalFormat.format(calculaTarifa()) + " euros";
 	}
 }
