@@ -61,23 +61,6 @@ public class PruebaVehiculos {
 		System.out.println(vehiculo);
 	}
 	
-//	private static void andarCoche(Scanner s, Coche cocheMini) {
-//		double km;
-//		System.out.println("¿Cuántos kilometros quieres andar con el coche?");
-//		km = s.nextDouble();
-//		cocheMini.andar(km);
-//		System.out.println("El coche ha andando " + km + " kilometros");
-//		System.out.println(cocheMini);
-//	}
-//
-//	private static void andarBici(Scanner s, Bicicleta biciRoja) {
-//		double km;
-//		System.out.println("¿Cuántos kilometros quieres andar con la bicicleta?");
-//		km = s.nextDouble();
-//		biciRoja.andar(km);
-//		System.out.println("La bicicleta ha andando " + km + " kilometros");
-//		System.out.println(biciRoja);
-//	}
 
 	private static void mostrarMenu() {
 		System.out.println("VEHICULOS:");
