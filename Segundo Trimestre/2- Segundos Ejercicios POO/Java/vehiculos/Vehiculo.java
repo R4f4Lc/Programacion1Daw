@@ -64,13 +64,11 @@ public class Vehiculo {
 	 */
 	 void setKilometrosRecorridos(double kilometros) {
 		this.kilometrosRecorridos = this.getKilometrosRecorridos() + kilometros;
-//		Vehiculo.kilometrosTotales += kilometros;
 		setKilometrosTotales(kilometros);
 	}
 	
 	public void andar(double km) {
 		setKilometrosRecorridos(km);
-		//setKilometrosTotales(km);
 	}
 
 	/* (non-Javadoc)
