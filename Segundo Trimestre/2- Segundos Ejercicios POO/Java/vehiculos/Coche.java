@@ -29,7 +29,7 @@ public class Coche extends Vehiculo{
 		return marca;
 	}
 
-	public void setMarca(String marca) {
+	private void setMarca(String marca) {
 		this.marca = marca;
 	}
 	
