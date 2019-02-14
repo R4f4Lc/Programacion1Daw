@@ -1,0 +1,56 @@
+Página 151.
+Ejercicio 2 -A continuación tienes una lista en la que están mezcladas varias clases con
+instancias de esas clases. Para ponerlo un poco más difícil, todos los elementos
+están escritos en minúscula. Di cuáles son las clases, cuáles las instancias,
+a qué clase pertenece cada una de estas instancias y cuál es la jerarquía
+entre las clases: paula, goofy, gardfiel, perro, mineral, caballo, tom, silvestre,
+pirita, rocinante, milu, snoopy, gato, pluto, animal, javier, bucefalo, pegaso,
+ayudante_de_santa_claus, cuarzo, laika, persona, pato_lucas.
+
+Mineral:
+pirita
+cuarzo
+
+Animal:
+	Perro: goofy, milu, snoopy, pluto, ayudante_de_santa_claus, laika
+	Gato: gardfiel, tom, silvestre
+	Caballo: rocinante, bucefalo, pegaso
+pato_lucas
+
+Personal:
+paula
+javier
+
+Ejercicio 3
+¿Cuáles serían los atributos de la clase Vivienda? 
+pais
+ciudad
+provincia
+calle
+numero
+cp
+¿Qué subclases se te ocurren?
+InfoVivienda:
+numerocuartos
+numerobombillas
+
+Ejercicio 7
+¿Cuáles serían los atributos de la clase Ventana (de ordenador)? ¿cuáles serían
+los métodos? Piensa en las propiedades y en el comportamiento de una
+ventana de cualquier programa
+
+Vetana:
+programa
+infoprograma
+estado(maximizado o minimizado o cerrado)
+
+Métodos:
+minimizar
+maximizar
+cerrar
+
+
+
+
+
+
