@@ -14,7 +14,7 @@ Para descargar este proyecto ejecutamos los siguientes comandos:
 git clone https://github.com/R4f4Lc/Programacion1Daw.git
 cd Programacion1Daw
 ```
-Esto no descargará el proyecto actual y nos creará la carpeta **Programacion1Daw** con todos los ejercicios.
+Esto descargará el proyecto actual y nos creará la carpeta **Programacion1Daw** con todos los ejercicios.
 
 ### Listado de Ejercicios
 
