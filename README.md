@@ -25,14 +25,14 @@ Actualmente se encuentran disponibles los siguientes ejercicios:
 | Práctica PseInt |![img](http://i.imgur.com/VJ7IoXU.png) |
 | Programas Secuenciales |![img](http://i.imgur.com/VJ7IoXU.png) |
 | Práctica PseInt 2 |![img](http://i.imgur.com/VJ7IoXU.png) |
-| Programas Estructuras Alternativas |![img](http://i.imgur.com/VJ7IoXU.png)|
+| Programas Estructuras Alternativas |![img](http://i.imgur.com/VJ7IoXU.png) |
 | Programas Estructuras Repetitivas |![img](http://i.imgur.com/VJ7IoXU.png) |
 | Arrays | ![img](http://i.imgur.com/VJ7IoXU.png)|
 |Python|![img](http://i.imgur.com/VJ7IoXU.png)|
-|Examen Prueba Noviembre |![img](http://i.imgur.com/kR8HJwg.png)|
-|Examen 1º Trimestre |![img](http://i.imgur.com/kR8HJwg.png)|
-|Primeros Ejercicios POO|![img](http://i.imgur.com/VJ7IoXU.png)|
-|Segundos Ejercicios POO|![img](http://i.imgur.com/VJ7IoXU.png)|
-|Terceros Ejercicios POO |![img](http://i.imgur.com/kR8HJwg.png)|
+|Examen Prueba Noviembre |![img](http://i.imgur.com/VJ7IoXU.png) |
+|Examen 1º Trimestre |![img](http://i.imgur.com/VJ7IoXU.png) |
+|Primeros Ejercicios POO|![img](http://i.imgur.com/VJ7IoXU.png) |
+|Segundos Ejercicios POO|![img](http://i.imgur.com/VJ7IoXU.png) |
+|Terceros Ejercicios POO |![img](http://i.imgur.com/kR8HJwg.png) |
 
 [Twitter]: <https://twitter.com/RafaLpeC/>
