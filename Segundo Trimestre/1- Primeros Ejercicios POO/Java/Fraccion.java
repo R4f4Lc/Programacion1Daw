@@ -12,47 +12,90 @@
 * @author Rafael López | RafaLpeC
 */
 
-
-import java.lang.Math;
 public class Fraccion {
-	public double numerador, denominador, fraccion;
+	private double numerador, denominador;
 
 	/**
 	 * @param numerador
 	 * @param denominador
+	 * Definición del constructor que llama al setNumerador y setDenominador
 	 */
 	public Fraccion(double num, double den) {
-		this.numerador = Math.abs(num);
-		this.denominador = Math.abs(den);
-		this.fraccion = this.numerador/this.denominador;
+		setNumerador(num);
+		setDenominador(den);
 	}
 	
-	public Double getFraccion(){
-		if (this.denominador == 0.0) {
-			return null;
+	/**
+	 * @param num
+	 * Asignamos un valor a numerador
+	 */
+	public void setNumerador(double num) {
+		numerador = num;
+	}
+
+	/**
+	 * @return
+	 * Devolvemos el valor del numerador
+	 */
+	public double getNumerador() {
+		return numerador;
+	}
+
+	/**
+	 * @param den
+	 * @return
+	 * Checkea que el denominador no sea 0 en tal caso devuelve true si es 0 y si no devuelve false
+	 */
+	public static boolean checkDenominador(double den) {
+		if(den==0) {
+			return true;
 		}
 		else {
-			return this.fraccion;
+			return false;
 		}
 	}
 	
-	public double getNum() {
-		return this.numerador;
+	/**
+	 * @param den
+	 * Asignamos el valor a denominador
+	 */
+	public void setDenominador(double den) {
+		denominador = den;
 	}
 	
-	public double getDen() {
-		return this.denominador;
-	}
+
+	/**
+	 * @return
+	 * Devolvemos el valor de denominador
+	 */
+	public double getDenominador() {
+		return denominador;
+	}	
 	
+	/**
+	 * @return
+	 * Devolvemos el resultado de la fracción
+	 */
+	public double getResultado(){
+		return numerador/denominador;
+		}
+	
+	/**
+	 * @param num
+	 * @return
+	 * Devolvemos la múltiplicación del número
+	 */
 	public double MultiplicaNum(double num) {
-		return (Math.abs(num)*this.numerador)/this.denominador;
+		return (num*numerador)/denominador;
 	}
 	
-	public double MultiplicaFrac(Fraccion frac2) {
-		return (this.numerador * frac2.numerador)/(this.denominador*frac2.denominador);
-	}
-	
-	private Double mcm(Double num1, Double num2) {
+	/**
+	 * @param num1
+	 * @param num2
+	 * @return
+	 * Calcula el mínimo común múltiplo
+	 */
+	private double mcm(double num1, double num2) {
 		double multiplo;
 		if (num1>num2)
             multiplo=num1;
@@ -64,19 +107,41 @@ public class Fraccion {
 		return multiplo;
 	}
 	
+	/**
+	 * @param frac2
+	 * @return
+	 * Sumamos dos fracciones
+	 */
 	public double SumaFrac(Fraccion frac2) {
 		double multiplo = mcm(this.denominador, frac2.denominador);
 		return (((multiplo/this.denominador)*this.numerador)+((multiplo/frac2.denominador)*frac2.numerador))/multiplo;
 	}
 	
+	/**
+	 * @param frac2
+	 * @return
+	 * Restamos dos fracciones
+	 */
 	public double RestarFrac(Fraccion frac2) {
 		double multiplo = mcm(this.denominador, frac2.denominador);
 		return (((multiplo/this.denominador)*this.numerador)-((multiplo/frac2.denominador)*frac2.numerador))/multiplo;
 	}
 	
-	public String simplificar() {
-		double multiplo = mcm(this.numerador, this.denominador);
-		return "La fracción simplicada es " + this.numerador/multiplo +  "/" +  this.denominador/multiplo;
+	/**
+	 * @param frac2
+	 * @return
+	 * Multiplicamos dos fracciones
+	 */
+	public double MultiplicaFrac(Fraccion frac2) {
+		return (this.numerador * frac2.numerador)/(this.denominador*frac2.denominador);
 	}
 	
+	/**
+	 * @return
+	 * Simplificamos las fracciones
+	 */
+	public String simplificar() {
+		double multiplo = mcm(numerador, denominador);
+		return numerador/multiplo +  "/" +  denominador/multiplo;
+	}
 }
