@@ -1,0 +1,6 @@
+Java no trae por defecto en sus librerias la libreria de control de JSON. Nos tendremos que descargar
+la libreria de google de java de json que la dejaré aqui y añadirla al eclipse siguiendo estos pasos:
+1. Nos vamos a Project -> Properties
+2. Nos vamos en el menú izquierdo a a Java Build Path y seleccionamos la pestaña Libraries.
+3. Pulsamos en "Add External JARs..." y seleccionamos el archivo.
+4. ¡Listo! Ya tenemos nuestra libreria añadida correctamente.

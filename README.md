@@ -33,6 +33,7 @@ Actualmente se encuentran disponibles los siguientes ejercicios:
 |Examen 1º Trimestre |![img](http://i.imgur.com/VJ7IoXU.png) |
 |Primeros Ejercicios POO|![img](http://i.imgur.com/VJ7IoXU.png) |
 |Segundos Ejercicios POO|![img](http://i.imgur.com/VJ7IoXU.png) |
+|Ejemplos de JSON|![img](http://i.imgur.com/VJ7IoXU.png) |
 |Terceros Ejercicios POO |![img](http://i.imgur.com/kR8HJwg.png) |
 
 [Twitter]: <https://twitter.com/RafaLpeC/>
