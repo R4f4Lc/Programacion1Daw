@@ -468,19 +468,28 @@ public class Gestisimal {
     numero=seleccionArticulo(art, s);
     
     //Pedimos el número de artículos a ingresar:
-    System.out.println("\n\n¿Cuántos artículos desea ingresar?");
-    cantidadArticulos = s.nextInt();
-    s.nextLine();
+//    System.out.println("\n\n¿Cuántos artículos desea ingresar?");
+//    cantidadArticulos = s.nextInt();
+//    s.nextLine();
     
     //Mientras el número sea negativo le negamos la entrada al usuario y solicitamos un nuevo valor:
-    while(cantidadArticulos<0) {
-      System.out.print("\n\nNo puede introducir una cantidad negativa de artículos, introduzca un valor positivo.");
+//    while(cantidadArticulos<0) {
+//      System.out.print("\n\nNo puede introducir una cantidad negativa de artículos, introduzca un valor positivo.");
+//      System.out.println("\n\n¿Cuántos artículos desea registrar?");
+//      cantidadArticulos = s.nextInt();
+//      s.nextLine();
+//    }
+    
+   // (art.get(numero-1)).cambiaStock(cantidadArticulos);
+    
+    try {
       System.out.println("\n\n¿Cuántos artículos desea registrar?");
       cantidadArticulos = s.nextInt();
       s.nextLine();
+      (art.get(numero-1)).incrementaStock(cantidadArticulos);
+    } catch (ErrorStockException e) {
+      System.out.println(e.getMessage());
     }
-    
-    (art.get(numero-1)).cambiaStock(cantidadArticulos);
   }
   
   
@@ -513,15 +522,23 @@ public class Gestisimal {
     //Comprobamos que el artículo selecciondo sea corecto:
     numero=seleccionArticulo(art, s);
     
-    System.out.println("\n\n¿Cuántos artículos desea retirar?");
-    cantidadArticulos = s.nextInt();
-    s.nextLine();
+//    System.out.println("\n\n¿Cuántos artículos desea retirar?");
+//    cantidadArticulos = s.nextInt();
+//    s.nextLine();
     
     //Si el número ingresado es positivo lo pasamos a negativo:
-    if (cantidadArticulos>0) {
-      cantidadArticulos *= -1;
+//    if (cantidadArticulos>0) {
+//      cantidadArticulos *= -1;
+//    }
+   // (art.get(numero-1)).cambiaStock(cantidadArticulos);
+    try {
+      System.out.println("\n\n¿Cuántos artículos desea retirar?");
+      cantidadArticulos = s.nextInt();
+      s.nextLine();
+      (art.get(numero-1)).decrementaStock(cantidadArticulos);
+    } catch (ErrorStockException e) {
+      System.out.println(e.getMessage());
     }
-    (art.get(numero-1)).cambiaStock(cantidadArticulos);
     
     //Esperamos 3 segundos:
     esperaSegundos(3);

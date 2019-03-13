@@ -58,9 +58,64 @@ public class Articulo {
    * Asigna una cantidad determinada de stock en un artículo.
    * 
    * @param numArticulos  La cantidad a insertar en el stock
+   * @throws ErrorStockException  Cuando el stock es negativo
    */
-  protected void setStock(int numArticulos) {    
+  private void setStock(int numArticulos) throws ErrorStockException {    
+    if(numArticulos<0)
+      throw new ErrorStockException("El stock no puede ser negativo.");
     this.stock = numArticulos;    
+  }
+  
+  /**
+   * Incrementa el stock del artículo 
+   * @param cantidad Número de artículos a incrementar
+   * @throws ErrorStockException Cuando la cantidad es negativa 
+   */
+  void incrementaStock(int cantidad) throws ErrorStockException{
+      if(cantidad<0)
+        throw new ErrorStockException("Incrementa stock: La cantidad no puede ser negativa.");
+      setStock(getStock()+cantidad);
+  }
+  
+  /* (non-Javadoc)
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + codigo;
+    return result;
+  }
+
+
+  /* (non-Javadoc)
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Articulo other = (Articulo) obj;
+    if (codigo != other.codigo)
+      return false;
+    return true;
+  }
+
+
+  /**
+   * Decrementa el stock del artículo
+   * @param cantidad Número de artículos a decrementar
+   * @throws ErrorStockException Cuando la cantidad es negativa o se intenta asignar un stock negativo
+   */
+  void decrementaStock(int cantidad) throws ErrorStockException {
+    if(cantidad<0)
+      throw new ErrorStockException("Decrementa stock: La cantidad no puede ser negativa.");
+    setStock(getStock()-cantidad);
   }
   
   
