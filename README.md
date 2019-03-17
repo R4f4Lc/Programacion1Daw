@@ -36,6 +36,6 @@ Actualmente se encuentran disponibles los siguientes ejercicios:
 |Ejemplos de JSON|![img](http://i.imgur.com/VJ7IoXU.png) |
 |Terceros Ejercicios POO |![img](http://i.imgur.com/VJ7IoXU.png) |
 |Ejercicios colecciones y diccionarios |![img](http://i.imgur.com/kR8HJwg.png) |
-
+|Ejercicios con Excepciones | ![img](http://i.imgur.com/VJ7IoXU.png) |
 
 [Twitter]: <https://twitter.com/RafaLpeC/>
