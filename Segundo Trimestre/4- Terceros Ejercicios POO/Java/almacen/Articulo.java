@@ -30,20 +30,24 @@ public class Articulo {
    * Constructor
    */
   public Articulo(String desc, double precComp, double precVen, int numStock) {  
-    asignaCodigoArt();    
+    codigo = asignaCodigoArt();    
     descripcion = desc;    
     precioCompra = precComp;    
     precioVenta = precVen;    
-    stock = numStock;
+    try {
+      setStock(numStock);
+    } catch (ErrorStockException e) {
+      e.getMessage();
+    }
   }
 
 
   /**
    * Asigna un código único para cada artículo.
    */
-  private void asignaCodigoArt() {
+  private int asignaCodigoArt() {
     numArticulo++;
-    codigo = numArticulo;
+    return numArticulo;
   }
   
   
