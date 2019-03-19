@@ -1,41 +1,87 @@
 package almacen;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 
+=======
+>>>>>>> d3ce116f24fee9c1873b5f7d4d65a4225be3ad16
 /**
  * 
  * Clase artículo encargada de llevar un control sobre los artículos que están almacenados en un almacén. 
  * Se almacenan de cada uno de los artículos:
+<<<<<<< HEAD
+=======
+ * 
+>>>>>>> d3ce116f24fee9c1873b5f7d4d65a4225be3ad16
  * <ul>
  * <li>Código de referencia (único)</li>
  * <li>Descripción</li>
  * <li>Precio con el que fue comprado</li>
  * <li>Precio al que debe ser vendido</li>
  * <li>Cantidad de unidades almacenadas (stock)</li>
+<<<<<<< HEAD
  * <li>Si está o no descatalogado</li>
+=======
+>>>>>>> d3ce116f24fee9c1873b5f7d4d65a4225be3ad16
  * </ul>
  * 
  * 
- * @author Francisco Javier González Sabariego
+ * @author @author JavierGF00 R4f4Lc FcoJavierGlez
  *
  */
 public class Articulo {
-  
-  private int codigo;
-  
-  private String descripcion;
-  
+  //Atributos:
+  private int codigo;  
+  private String descripcion;  
   private double precioCompra;
-  
-  private double precioVenta;
-  
+  private double precioVenta;  
   private int stock;
-  
-  //private boolean descatalogado;
+  private static int numArticulo = 0;
   
   /**
    * Constructor
    */
+  public Articulo(String desc, double precComp, double precVen, int numStock) {  
+    asignaCodigoArt();    
+    descripcion = desc;    
+    precioCompra = precComp;    
+    precioVenta = precVen;    
+    stock = numStock;
+  }
+
+
+  /**
+   * Asigna un código único para cada artículo.
+   */
+  private void asignaCodigoArt() {
+    numArticulo++;
+    codigo = numArticulo;
+  }
+  
+  
+  //#################     STOCK     #################\\
+  
+  /**
+   * Incrementa el stock del artículo 
+   * @param cantidad Número de artículos a incrementar
+   * @throws ErrorStockException Cuando la cantidad es negativa 
+   */
+  void incrementaStock(int cantidad) throws ErrorStockException{
+      if(cantidad<0)
+        throw new ErrorStockException("Incrementa stock: La cantidad no puede ser negativa.");
+      setStock(getStock()+cantidad);
+  }
+  
+  
+  //private boolean descatalogado;
+  
+  /**
+   * Decrementa el stock del artículo
+   * 
+   * @param cantidad Número de artículos a decrementar
+   * @throws ErrorStockException Cuando la cantidad es negativa o se intenta asignar un stock negativo
+   */
+<<<<<<< HEAD
   public Articulo(int cod, String desc, double precComp, double precVen, int stock) {
     
     this.codigo = cod;
@@ -51,10 +97,32 @@ public class Articulo {
     //this.descatalogado = false;
     
     
+=======
+  void decrementaStock(int cantidad) throws ErrorStockException {
+    if(cantidad<0)
+      throw new ErrorStockException("Decrementa stock: La cantidad no puede ser negativa.");
+    setStock(getStock()-cantidad);
+>>>>>>> d3ce116f24fee9c1873b5f7d4d65a4225be3ad16
   }
   
   
+  //#################     SETTERS     #################\\
+  
   /**
+   * Asigna una cantidad determinada de stock en un artículo.
+   * 
+   * @param numArticulos  La cantidad a insertar en el stock
+   * @throws ErrorStockException  Cuando el stock es negativo
+   */
+  private void setStock(int numArticulos) throws ErrorStockException {    
+    if(numArticulos<0)
+      throw new ErrorStockException("El stock no puede ser negativo.");
+    stock = numArticulos; 
+  }
+  
+
+  /**
+<<<<<<< HEAD
    * Asigna una cantidad determinada de stock en un artículo.
    * 
    * @param numArticulos  La cantidad a insertar en el stock
@@ -126,10 +194,23 @@ public class Articulo {
    * <li>Reduce el stock almacenado si el valor de entrada es negativo y si el total a restar 
    * no supera al total almacenado.</li>
    * </ul>
+=======
+   * Inserta un código de artículo.
+>>>>>>> d3ce116f24fee9c1873b5f7d4d65a4225be3ad16
    * 
-   * En caso de querer reducir un total de artículos superior al almacenado muestra un mensaje 
-   * de información al usuario y no hace ningún cambio.
+   * @param numeroCodigo  Código (int) de artículo.
+   */
+  /*
+   * void setCodigo(int numeroCodigo) {          //Para la carga de objetos de la BADA?
+    codigo = numeroCodigo;
+  }
+  */
+  
+  
+  /**
+   * Inserta la descripción del artículo.
    * 
+<<<<<<< HEAD
    * @param cantidad  Unidades a modificar en el stock (int)
    */
   protected void cambiaStock(int cantidad) {    
@@ -143,12 +224,45 @@ public class Articulo {
     } else {      
       this.stock += cantidad;      
     }    
+=======
+   * @param desc  Descripción (String) del artículo.
+   */
+  void setDescripcion(String desc) {
+    descripcion = desc;
+>>>>>>> d3ce116f24fee9c1873b5f7d4d65a4225be3ad16
   }
   
   
   /**
+<<<<<<< HEAD
    * Devuelve la cantidad de unidades almacenadas.
    * 
+=======
+   * Inserta el precio de compra del artículo.
+   * 
+   * @param precioCompra  Precio (double) con el que fue comprado el artículo.
+   */
+  void setPrecioCompra(double precioComp) {
+    precioCompra = precioComp;
+  }
+  
+  
+  /**
+   * Inserta el precio de venta del artículo.
+   * 
+   * @param precioVen  Precio (double) de venta del artículo.
+   */
+  void setPrecioVenta(double precioVen) {
+    precioVenta = precioVen;
+  }
+  
+  
+  //#################     GETTERS     #################\\   
+  
+  /**
+   * Devuelve la cantidad de unidades almacenadas.
+   * 
+>>>>>>> d3ce116f24fee9c1873b5f7d4d65a4225be3ad16
    * @return  Unidades almacenadas (int)
    */
   public int getStock() {
@@ -183,14 +297,21 @@ public class Articulo {
    */
   public String getDescripcion() {
     return this.descripcion;
+<<<<<<< HEAD
   }
   
+=======
+  }  
+  
+   
+>>>>>>> d3ce116f24fee9c1873b5f7d4d65a4225be3ad16
   /**
    * Devuelve la descripcion del artículo.
    * 
    * @return Código del artículo (int)
    */
   public int getCodigo() {
+<<<<<<< HEAD
     return this.codigo;
   }
   
@@ -289,4 +410,53 @@ public class Articulo {
           "\nPrecio de venta: " + this.precioVenta + "\nArtículos en almacén: " + this.stock + "\nDESCATALOGADO";
     }  */  
   }
+=======
+    return codigo;
+  }
+  
+  
+  //#################     TO STRING     #################\\  
+  
+  /**
+   * Imprime el estado de cada artículo:
+   */
+  public String toString() {
+    return "Código de art: " + this.codigo + "\nDescripción: " +
+        this.descripcion + "\nPrecio de compra: " + this.precioCompra + 
+        "\nPrecio de venta: " + this.precioVenta + "\nArtículos en almacén: " + this.stock;  
+  }
+  
+  
+  //#####################################################\\
+  
+  /* (non-Javadoc)
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + codigo;
+    return result;
+  }
+
+
+  /* (non-Javadoc)
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Articulo other = (Articulo) obj;
+    if (codigo != other.codigo)
+      return false;
+    return true;
+  }
+  
+>>>>>>> d3ce116f24fee9c1873b5f7d4d65a4225be3ad16
 }
