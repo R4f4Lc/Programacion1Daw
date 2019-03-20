@@ -23,33 +23,18 @@ public class Articulo {
   private String descripcion;  
   private double precioCompra;
   private double precioVenta;  
-  private int stock;
+  private int stock = 0;
   private static int numArticulo = 0;
   
   /**
    * Constructor
    */
-  public Articulo(String desc, double precComp, double precVen, int numStock) {  
-    codigo = asignaCodigoArt();    
-    descripcion = desc;    
-    precioCompra = precComp;    
-    precioVenta = precVen;    
-    try {
-      setStock(numStock);
-    } catch (ErrorStockException e) {
-      e.getMessage();
-    }
+  public Articulo(String descripcion, double precioCompra, double precioVenta) {  
+    setDescripcion(descripcion);    
+    setPrecioCompra(precioCompra);    
+    setPrecioVenta(precioVenta);
+    setCodigo();
   }
-
-
-  /**
-   * Asigna un código único para cada artículo.
-   */
-  private int asignaCodigoArt() {
-    numArticulo++;
-    return numArticulo;
-  }
-  
   
   //#################     STOCK     #################\\
   
@@ -86,7 +71,7 @@ public class Articulo {
    * @param numArticulos  La cantidad a insertar en el stock
    * @throws ErrorStockException  Cuando el stock es negativo
    */
-  private void setStock(int numArticulos) throws ErrorStockException {    
+  private void setStock(int numArticulos) throws ErrorStockException {
     if(numArticulos<0)
       throw new ErrorStockException("El stock no puede ser negativo.");
     stock = numArticulos; 
@@ -98,11 +83,10 @@ public class Articulo {
    * 
    * @param numeroCodigo  Código (int) de artículo.
    */
-  /*
-   * void setCodigo(int numeroCodigo) {          //Para la carga de objetos de la BADA?
-    codigo = numeroCodigo;
+  private void setCodigo() {
+    codigo = numArticulo;
+    numArticulo++;
   }
-  */
   
   
   /**
@@ -152,7 +136,7 @@ public class Articulo {
    * 
    * @return  Precio de compra (double)
    */
-  public double getPrecioComp() {
+  public double getPrecioCompra() {
     return this.precioCompra;
   }
   
@@ -162,7 +146,7 @@ public class Articulo {
    * 
    * @return  Precio de venta (double)
    */
-  public double getPrecioVen() {
+  public double getPrecioVenta() {
     return this.precioVenta;
   }
   

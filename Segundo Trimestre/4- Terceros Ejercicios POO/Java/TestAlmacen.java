@@ -1,7 +1,5 @@
-package almacen;
+
 import almacen.Almacen;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -11,29 +9,6 @@ import java.util.Scanner;
  */
 
 public class TestAlmacen {
-  
-  /**
-   * Saca todos los articulos de la base de datos y los añade al arrayList de Almacen.
-   * 
-   */
-  private static void insertarBaseDatos() {
-    ResultSet rs = BaseDatos.selectAll();
-    if(rs != null) {
-      try{
-        while (rs.next()) {
-          Almacen.alta(new Articulo(rs.getString("Nombre"), rs.getDouble("PrecioC"), rs.getDouble("PrecioV"), rs.getInt("Stock")));
-        }
-      }catch(SQLException e) {
-        System.out.println("Error con la base de datos.");
-        System.exit(1);
-      }
-    }
-    else {
-      System.out.println("No hay articulos en la base de datos.");
-    }
-  }
-  
-  
   public static void main(String[] args) {
     Scanner s = new Scanner (System.in);
     int opcion;
@@ -41,10 +16,9 @@ public class TestAlmacen {
     String descripcion;
     double precioCompra;
     double precioVenta;
-    int stock;
     int codigo;
     int cantidadArticulos;
-    insertarBaseDatos();
+    Almacen.insertarBaseDatos();
 	  
 	  /**
 	   * Menú
@@ -61,7 +35,7 @@ public class TestAlmacen {
 	     * En el caso 1 se muestra una lista del almacén
 	     */
 	    case 1:
-	    	Almacen.mostrarLista();
+	    	System.out.println(Almacen.mostrarLista());
 	    	break;
 	    	
 	    	/**
@@ -71,8 +45,7 @@ public class TestAlmacen {
 	    	descripcion = qstring(s,"Introduzca descripcion del nuevo articulo: ");
 	    	precioCompra = qdouble(s, "Precio compra: ");
 	    	precioVenta=qdouble(s,"Precio Venta: ");
-	    	stock = qint(s,"Stock: ");
-	    	if (Almacen.alta(new Articulo(descripcion,precioCompra,precioVenta,stock))) {
+	    	if (Almacen.alta(descripcion, precioCompra, precioVenta)) {
 	    		System.out.println("El artículo se ha añadido correctamente");
 	    	}else {
 	    		System.out.println("Error. El artículo no se ha podido añadir correctamente");
@@ -166,7 +139,10 @@ public class TestAlmacen {
 	    	 * En el caso 7 se guardan los cambios efectuados y se cierra el programa
 	    	 */
 	    case 7:
+	      System.out.println("GUARDANDO CAMBIOS...");
         Almacen.guardar();
+        System.out.println("\n\nFIN DE PROGRAMA.");
+        System.exit(0);
 	    }
 	    
 	  }while(opcion!=7);
