@@ -35,7 +35,8 @@ Actualmente se encuentran disponibles los siguientes ejercicios:
 |Segundos Ejercicios POO|![img](http://i.imgur.com/VJ7IoXU.png) |
 |Ejemplos de JSON|![img](http://i.imgur.com/VJ7IoXU.png) |
 |Terceros Ejercicios POO |![img](http://i.imgur.com/VJ7IoXU.png) |
-|Ejercicios colecciones y diccionarios |![img](http://i.imgur.com/kR8HJwg.png) |
+|Ejercicios colecciones y diccionarios |![img](http://i.imgur.com/VJ7IoXU.png)|
 |Ejercicios con Excepciones | ![img](http://i.imgur.com/VJ7IoXU.png) |
+|Ejercicios con Ficheros |![img](http://i.imgur.com/kR8HJwg.png) |
 
 [Twitter]: <https://twitter.com/RafaLpeC/>
