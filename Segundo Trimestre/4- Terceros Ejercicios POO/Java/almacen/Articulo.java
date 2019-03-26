@@ -190,9 +190,7 @@ public class Articulo {
     if (codigo != other.codigo)
       return false;
     return true;
-  }
-  
-  //#################     TO STRING     #################\\  
+  } 
   
   /**
    * Imprime el estado de cada artículo:

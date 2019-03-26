@@ -10,19 +10,18 @@ import java.util.ArrayList;
 *
 */
 public class Almacen {
-  private static ArrayList<Articulo> arrayList = new ArrayList<Articulo>();
+  static ArrayList<Articulo> arrayList = new ArrayList<Articulo>();
   
   /**
    * Devuelve un articulo si existe
    * @param codigo
-   * @return
+   * @return 
    */
   private static Articulo getArticulo(int codigo) {
-    for (int i = 0; i >= arrayList.size(); i++) {
-      if((arrayList.get(i)).getCodigo() == codigo) {
-        return arrayList.get(i);
-      }
-  }
+    for(Articulo a : arrayList) {
+      if(a.getCodigo() == codigo)
+        return arrayList.get(codigo);
+    }
     return null;
   }
   
@@ -43,11 +42,9 @@ public class Almacen {
    * @return true si se ha eliminado. false en otro caso
    */
   public static boolean baja(int codigo) {
-    if(getArticulo(codigo) != null)
-        return arrayList.remove(arrayList.get(codigo));
-    return false;
+    return arrayList.remove(getArticulo(codigo));
   }
-    
+   
   /**
    * Modifica la descripción del artículo del almacén siempre y cuando exista.
    * @param codigo código del articulo
@@ -132,10 +129,10 @@ public class Almacen {
    * Muestra todos los articulos en el almacen
    * @return 
    */
-  public static String mostrarLista() {
-    String cadena = "";
+  public static StringBuilder mostrarLista() {
+    StringBuilder cadena = new StringBuilder();
     for (int i=0; i<arrayList.size(); i++) {
-      cadena+="\n\nArtículo nº (" + (i) + "): \n" + (arrayList.get(i)).toString();
+      cadena.append("\n\nArtículo nº (" + (i) + "): \n" + (arrayList.get(i)).toString());
     }
     return cadena;
   }
@@ -164,7 +161,7 @@ public class Almacen {
     BaseDatos.deleteAll();
     for (int i = 0; i < arrayList.size(); i++) {
       BaseDatos.insert(i,(arrayList.get(i)).getDescripcion(),(arrayList.get(i)).getPrecioCompra(),(arrayList.get(i)).getPrecioVenta(),(arrayList.get(i)).getStock());
-      cadena+=("Insertado articulo " + (arrayList.get(i)).getCodigo() + " en la DB");
+      cadena+=("\nInsertado articulo " + (arrayList.get(i)).getCodigo() + " en la DB");
     }
     return cadena;
   }
