@@ -10,7 +10,7 @@ import java.util.ArrayList;
 *
 */
 public class Almacen {
-  static ArrayList<Articulo> arrayList = new ArrayList<Articulo>();
+   private static ArrayList<Articulo> arrayList = new ArrayList<Articulo>();
   
   /**
    * Devuelve un articulo si existe
