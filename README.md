@@ -20,9 +20,9 @@ Esto descargará el proyecto actual y nos creará la carpeta **Programacion1Daw*
 
 Actualmente se encuentran disponibles los siguientes ejercicios:
 
-| Listado Ejercicios | Estado |   | Listado Ejercicios | Estado |
+| Listado Ejercicios | Estado |  Listado Ejercicios | Estado |
 | ------ | ------ |
-| Práctica PseInt |![img](http://i.imgur.com/VJ7IoXU.png) | |Ejercicios JSP |![img](http://i.imgur.com/VJ7IoXU.png) |
+| Práctica PseInt |![img](http://i.imgur.com/VJ7IoXU.png) |Ejercicios JSP |![img](http://i.imgur.com/VJ7IoXU.png) |
 | Programas Secuenciales |![img](http://i.imgur.com/VJ7IoXU.png) |
 | Práctica PseInt 2 |![img](http://i.imgur.com/VJ7IoXU.png) |
 | Programas Estructuras Alternativas |![img](http://i.imgur.com/VJ7IoXU.png) |
