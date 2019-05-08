@@ -12,9 +12,7 @@ public class Teclado {
    * @return
    */
   static public String leerString() {
-    String cadena;
-    cadena = scanner.nextLine();
-    return cadena;
+    return scanner.nextLine();
   }
   
   /**

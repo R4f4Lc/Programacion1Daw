@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import almacen.Articulo.IvaInvalidoException;
+import almacen.IvaInvalidoException;
 
 /**
 * Clase Almacen que se encarga de la gestión de todo el almacen y de la comunicación con la clase Articulo.
@@ -19,10 +19,11 @@ public class Almacen {
    * @param codigo
    * @return 
    */
-  private static Articulo getArticulo(int codigo) {
-    for(Articulo a : arrayList) {
-      if(a.getCodigo() == codigo)
-        return arrayList.get(codigo);
+  public static Articulo getArticulo(int codigo) {
+    try {
+      return arrayList.get(codigo);
+    }catch(IndexOutOfBoundsException ioobe) {
+      System.out.println("ID Articulo inválido.");
     }
     return null;
   }
@@ -34,8 +35,8 @@ public class Almacen {
    * @param PrecioVenta
    * @return true de que ha insertado correctamente
    */
-  public static boolean alta(String Descripcion, double PrecioCompra, double PrecioVenta, Iva TipoIva, int Stock) throws IvaInvalidoException, ErrorStockException {
-    return arrayList.add(new Articulo(Descripcion, PrecioCompra, PrecioVenta, TipoIva, Stock));
+  public static void alta(String Descripcion, double PrecioCompra, double PrecioVenta, Iva TipoIva, int Stock) throws IvaInvalidoException, ErrorStockException {
+    arrayList.add(new Articulo(Descripcion, PrecioCompra, PrecioVenta, TipoIva, Stock));
     }
   
   /**

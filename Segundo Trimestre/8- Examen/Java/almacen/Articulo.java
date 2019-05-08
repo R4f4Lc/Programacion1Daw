@@ -34,9 +34,9 @@ public class Articulo {
     setDescripcion(descripcion);
     setPrecioCompra(precioCompra);
     setPrecioVenta(precioVenta);
-    setCodigo();
     setStock(stock);
     setTipoIva(tipoIva);
+    setCodigo();
   }
   
   //#################     STOCK     #################\\
@@ -126,11 +126,11 @@ public class Articulo {
    * 
    * @param tipoIv
    */
-  void setTipoIva(Iva tipoIv) throws IvaInvalidoException{
-    if (tipoIv == null) {
+  void setTipoIva(Iva tipoIva) throws IvaInvalidoException{
+    if (tipoIva == null)
       throw new IvaInvalidoException("El iva tiene que ser válido en este caso");
-    }
-    tipoIva = tipoIv;
+    
+    this.tipoIva = tipoIva;
   }
   
   //#################     GETTERS     #################\\   

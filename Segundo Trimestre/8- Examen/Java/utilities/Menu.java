@@ -5,12 +5,11 @@ package utilities;
  * 
  * @author R4f4Lc
  */
-import java.util.Scanner;
+import utilities.Teclado;
 
 public class Menu {
-  Scanner s = new Scanner (System.in);
-  String nombre;
-  String opciones[];
+  private String nombre;
+  private String opciones[];
 
   public Menu(String nombre, String[] opciones) {
     this.nombre = nombre;
