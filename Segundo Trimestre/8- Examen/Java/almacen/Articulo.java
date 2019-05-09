@@ -2,8 +2,8 @@ package almacen;
 
 /**
  * 
- * Clase artículo encargada de llevar un control sobre los artículos que están almacenados en un almacén. 
- * Se almacenan de cada uno de los artículos:
+ * Clase artículo encargada de llevar un control sobre los artículos que están
+ * almacenados en un almacén. Se almacenan de cada uno de los artículos:
  * 
  * <ul>
  * <li>Código de referencia (único)</li>
@@ -18,19 +18,20 @@ package almacen;
  *
  */
 public class Articulo {
-  //Atributos:
-  private int codigo;  
-  private String descripcion;  
+  // Atributos:
+  private int codigo;
+  private String descripcion;
   private double precioCompra;
-  private double precioVenta;  
+  private double precioVenta;
   private int stock = 0;
   private Iva tipoIva;
   private static int numArticulo = 0;
-  
+
   /**
    * Constructor
    */
-  public Articulo(String descripcion, double precioCompra, double precioVenta, Iva tipoIva, int stock) throws IvaInvalidoException, ErrorStockException {  
+  public Articulo(String descripcion, double precioCompra, double precioVenta, Iva tipoIva, int stock)
+      throws IvaInvalidoException, ErrorStockException {
     setDescripcion(descripcion);
     setPrecioCompra(precioCompra);
     setPrecioVenta(precioVenta);
@@ -38,162 +39,163 @@ public class Articulo {
     setTipoIva(tipoIva);
     setCodigo();
   }
-  
-  //#################     STOCK     #################\\
-  
-  /**
-   * Incrementa el stock del artículo 
-   * @param cantidad Número de artículos a incrementar
-   * @throws ErrorStockException Cuando la cantidad es negativa 
-   */
-  void incrementaStock(int cantidad) throws ErrorStockException{
-      if(cantidad<0)
-        throw new ErrorStockException("Incrementa stock: La cantidad no puede ser negativa.");
-      setStock(getStock()+cantidad);
+
+  // ################# STOCK #################\\
+
+  Articulo(int codigo) {
+    setCodigo(codigo);
   }
-  
-  
+
+  private void setCodigo(int codigo) {
+    this.codigo = codigo;
+
+  }
+
+  /**
+   * Incrementa el stock del artículo
+   * 
+   * @param cantidad Número de artículos a incrementar
+   * @throws ErrorStockException Cuando la cantidad es negativa
+   */
+  void incrementaStock(int cantidad) throws ErrorStockException {
+    if (cantidad < 0)
+      throw new ErrorStockException("Incrementa stock: La cantidad no puede ser negativa.");
+    setStock(getStock() + cantidad);
+  }
+
   /**
    * Decrementa el stock del artículo
    * 
    * @param cantidad Número de artículos a decrementar
-   * @throws ErrorStockException Cuando la cantidad es negativa o se intenta asignar un stock negativo
+   * @throws ErrorStockException Cuando la cantidad es negativa o se intenta
+   *                             asignar un stock negativo
    */
   void decrementaStock(int cantidad) throws ErrorStockException {
-    if(cantidad<0)
+    if (cantidad < 0)
       throw new ErrorStockException("Decrementa stock: La cantidad no puede ser negativa.");
-    setStock(getStock()-cantidad);
+    setStock(getStock() - cantidad);
   }
-  
-  
-  //#################     SETTERS     #################\\
-  
+
+  // ################# SETTERS #################\\
+
   /**
    * Asigna una cantidad determinada de stock en un artículo.
    * 
-   * @param numArticulos  La cantidad a insertar en el stock
-   * @throws ErrorStockException  Cuando el stock es negativo
+   * @param numArticulos La cantidad a insertar en el stock
+   * @throws ErrorStockException Cuando el stock es negativo
    */
   private void setStock(int numArticulos) throws ErrorStockException {
-    if(numArticulos<0)
+    if (numArticulos < 0)
       throw new ErrorStockException("El stock no puede ser negativo.");
-    stock = numArticulos; 
+    stock = numArticulos;
   }
-  
 
   /**
    * Inserta un código de artículo.
    * 
-   * @param numeroCodigo  Código (int) de artículo.
+   * @param numeroCodigo Código (int) de artículo.
    */
   private void setCodigo() {
     codigo = numArticulo;
     numArticulo++;
   }
-  
-  
+
   /**
    * Inserta la descripción del artículo.
    * 
-   * @param desc  Descripción (String) del artículo.
+   * @param desc Descripción (String) del artículo.
    */
   void setDescripcion(String desc) {
     descripcion = desc;
   }
-  
-  
+
   /**
    * Inserta el precio de compra del artículo.
    * 
-   * @param precioCompra  Precio (double) con el que fue comprado el artículo.
+   * @param precioCompra Precio (double) con el que fue comprado el artículo.
    */
   void setPrecioCompra(double precioComp) {
     precioCompra = precioComp;
   }
-  
-  
+
   /**
    * Inserta el precio de venta del artículo.
    * 
-   * @param precioVen  Precio (double) de venta del artículo.
+   * @param precioVen Precio (double) de venta del artículo.
    */
   void setPrecioVenta(double precioVen) {
     precioVenta = precioVen;
   }
-  
+
   /**
    * Inserta el tipo de iva del artículo.
    * 
    * @param tipoIv
    */
-  void setTipoIva(Iva tipoIva) throws IvaInvalidoException{
+  void setTipoIva(Iva tipoIva) throws IvaInvalidoException {
     if (tipoIva == null)
       throw new IvaInvalidoException("El iva tiene que ser válido en este caso");
-    
+
     this.tipoIva = tipoIva;
   }
-  
-  //#################     GETTERS     #################\\   
-  
+
+  // ################# GETTERS #################\\
+
   /**
    * Devuelve la cantidad de unidades almacenadas.
    * 
-   * @return  Unidades almacenadas (int)
+   * @return Unidades almacenadas (int)
    */
-  public int getStock() {
+  int getStock() {
     return this.stock;
   }
-  
-  
+
   /**
    * Devuelve el precio por el que fue comprado el artículo.
    * 
-   * @return  Precio de compra (double)
+   * @return Precio de compra (double)
    */
-  public double getPrecioCompra() {
+  double getPrecioCompra() {
     return this.precioCompra;
   }
-  
-  
+
   /**
    * Devuelve el precio por el que debe ser vendido el artículo.
    * 
-   * @return  Precio de venta (double)
+   * @return Precio de venta (double)
    */
-  public double getPrecioVenta() {
+  double getPrecioVenta() {
     return this.precioVenta;
   }
-  
-  
+
   /**
    * Devuelve el código del artículo.
    * 
-   * @return  Descripcion del artículo (String)
+   * @return Descripcion del artículo (String)
    */
-  public String getDescripcion() {
+  String getDescripcion() {
     return this.descripcion;
-  }  
-  
-   
+  }
+
   /**
    * Devuelve la descripcion del artículo.
    * 
    * @return Código del artículo (int)
    */
-  public int getCodigo() {
+  int getCodigo() {
     return codigo;
   }
-  
+
   /**
    * Devuelve el tipo de iva del artículo.
    * 
    * @return
-   * @throws IvaInvalidoException 
+   * @throws IvaInvalidoException
    */
-  public Iva getTipoIva() {
+  Iva getTipoIva() {
     return this.tipoIva;
   }
-  
+
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -214,14 +216,14 @@ public class Articulo {
     if (codigo != other.codigo)
       return false;
     return true;
-  } 
-  
+  }
+
   /**
    * Imprime el estado de cada artículo:
    */
   public String toString() {
-    return "Código de art: " + this.codigo + "\nDescripción: " +
-        this.descripcion + "\nPrecio de compra: " + this.precioCompra + 
-        "\nPrecio de venta: " + this.precioVenta + "\nArtículos en almacén: " + this.stock + "\nTipo de IVA: " + this.tipoIva;  
+    return "Código de art: " + this.codigo + "\nDescripción: " + this.descripcion + "\nPrecio de compra: "
+        + this.precioCompra + "\nPrecio de venta: " + this.precioVenta + "\nArtículos en almacén: " + this.stock
+        + "\nTipo de IVA: " + this.tipoIva;
   }
 }

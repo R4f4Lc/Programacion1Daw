@@ -1,7 +1,5 @@
 package almacen;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import almacen.IvaInvalidoException;
@@ -12,20 +10,21 @@ import almacen.IvaInvalidoException;
 *
 */
 public class Almacen {
-   private static ArrayList<Articulo> arrayList = new ArrayList<Articulo>();
+   private ArrayList<Articulo> arrayList = new ArrayList<Articulo>();
   
   /**
    * Devuelve un articulo si existe
    * @param codigo
    * @return 
+   * @throws ErrorCodigoException 
    */
-  public static Articulo getArticulo(int codigo) {
+  public Articulo getArticulo(int codigo) throws ErrorCodigoException {
     try {
       return arrayList.get(codigo);
     }catch(IndexOutOfBoundsException ioobe) {
-      System.out.println("ID Articulo inválido.");
+      throw new ErrorCodigoException("ID Articulo inválido.");
     }
-    return null;
+    
   }
   
   /**
@@ -33,9 +32,11 @@ public class Almacen {
    * @param Descripcion
    * @param PrecioCompra
    * @param PrecioVenta
+   * @param TipoIva
+   * @param Stock
    * @return true de que ha insertado correctamente
    */
-  public static void alta(String Descripcion, double PrecioCompra, double PrecioVenta, Iva TipoIva, int Stock) throws IvaInvalidoException, ErrorStockException {
+  public void alta(String Descripcion, double PrecioCompra, double PrecioVenta, Iva TipoIva, int Stock) throws IvaInvalidoException, ErrorStockException {
     arrayList.add(new Articulo(Descripcion, PrecioCompra, PrecioVenta, TipoIva, Stock));
     }
   
@@ -43,8 +44,9 @@ public class Almacen {
    * Elimina el artículo del almacén siempre y cuando exista.
    * @param codigo
    * @return true si se ha eliminado. false en otro caso
+   * @throws ErrorCodigoException 
    */
-  public static boolean baja(int codigo) {
+  public boolean baja(int codigo) throws ErrorCodigoException {
     return arrayList.remove(getArticulo(codigo));
   }
    
@@ -52,42 +54,30 @@ public class Almacen {
    * Modifica la descripción del artículo del almacén siempre y cuando exista.
    * @param codigo código del articulo
    * @param descripcion descripción nueva del articulo
-   * @return true si se ha modificado. false en otro caso
+   * @throws ErrorCodigoException 
    */
-  public static boolean modificarDescripcion(int codigo, String descripcion) {
-    if(getArticulo(codigo) != null) {
-      arrayList.get(codigo).setDescripcion(descripcion);
-      return true;
-    }
-    return false;
+  public void modificarDescripcion(int codigo, String descripcion) throws ErrorCodigoException {
+      getArticulo(codigo).setDescripcion(descripcion);
   }
   
   /**
    * Modifica el precio de compra del artículo del almacén siempre y cuando exista.
    * @param codigo código del articulo
    * @param PrecioCompra Precio de compra nuevo del articulo
-   * @return true si se ha modificado. false en otro caso
+   * @throws ErrorCodigoException 
    */
-  public static boolean modificarPrecioCompra(int codigo, double PrecioCompra) {
-    if(getArticulo(codigo) != null) {
-      arrayList.get(codigo).setPrecioCompra(PrecioCompra);
-      return true;
-    }
-    return false;
+  public void modificarPrecioCompra(int codigo, double PrecioCompra) throws ErrorCodigoException {
+      getArticulo(codigo).setPrecioCompra(PrecioCompra);
   }
   
   /**
    * Modifica el precio de venta del artículo del almacén siempre y cuando exista.
    * @param codigo código del articulo
    * @param PrecioVenta Precio de venta nuevo del articulo
-   * @return true si se ha modificado. false en otro caso
+   * @throws ErrorCodigoException 
    */
-  public static boolean modificarPrecioVenta(int codigo, double PrecioVenta) {
-    if(getArticulo(codigo) != null) {
-      arrayList.get(codigo).setPrecioVenta(PrecioVenta);
-      return true;
-    }
-    return false;
+  public void modificarPrecioVenta(int codigo, double PrecioVenta) throws ErrorCodigoException {
+      getArticulo(codigo).setPrecioVenta(PrecioVenta);
   }
   
   /**
@@ -95,18 +85,15 @@ public class Almacen {
    * @param codigo código del articulo
    * @param cantidadArticulos Cantidad de articulos a añadir
    * @return true si se ha modificado. false en otro caso
+   * @throws ErrorStockException 
+   * @throws ErrorCodigoException 
    */
-  public static boolean entradaMercancia(int codigo, int cantidadArticulos){
-    if(getArticulo(codigo) != null) {
-      try {
-        arrayList.get(codigo).incrementaStock(cantidadArticulos);
-        return true;
-      } catch (ErrorStockException e) {
-        System.out.println(e.getMessage());
-        return false;
-      }
-  }
-    return false;
+  public void entradaMercancia(int codigo, int cantidadArticulos) throws ErrorStockException, ErrorCodigoException{
+        try {
+          arrayList.get(arrayList.indexOf(new Articulo(codigo))).incrementaStock(cantidadArticulos);
+        } catch (IndexOutOfBoundsException e) {
+         throw new ErrorCodigoException("El código no existe.");
+        }
   }
   
   /**
@@ -115,24 +102,20 @@ public class Almacen {
    * @param cantidadArticulos Cantidad de articulos a eliminar
    * @return true si se ha modificado. false en otro caso
    */
-  public static boolean salidaMercancia(int codigo, int cantidadArticulos){
-    if(getArticulo(codigo) != null) {
+  public boolean salidaMercancia(int codigo, int cantidadArticulos)  throws ErrorStockException, ErrorCodigoException{
       try {
-        arrayList.get(codigo).decrementaStock(cantidadArticulos);
+        arrayList.get(arrayList.indexOf(new Articulo(codigo))).decrementaStock(cantidadArticulos);
         return true;
-      } catch (ErrorStockException e) {
-        System.out.println(e.getMessage());
-        return false;
-        }
+      } catch (IndexOutOfBoundsException e) {
+        throw new ErrorCodigoException("El código no existe.");
+       }
       }
-    return false;
-  }
   
   /**
    * Muestra todos los articulos en el almacen
    * @return 
    */
-  public static StringBuilder mostrarLista() {
+  public StringBuilder mostrarLista() {
     StringBuilder cadena = new StringBuilder();
     for (int i=0; i<arrayList.size(); i++) {
       cadena.append("\n\nArtículo nº (" + (i) + "): \n" + (arrayList.get(i)).toString());
@@ -144,14 +127,10 @@ public class Almacen {
    * Modifica el tipo de iva del artículo del almacén siempre y cuando exista.
    * @param codigo código del articulo
    * @param TipoIva TipoIva nuevo del articulo
-   * @return true si se ha modificado. false en otro caso
    * @throws IvaInvalidoException 
+   * @throws ErrorCodigoException 
    */
-  public static boolean modificarTipoIva(int codigo, Iva TipoIva) throws IvaInvalidoException {
-    if(getArticulo(codigo) != null) {
-      arrayList.get(codigo).setTipoIva(TipoIva);
-      return true;
-    }
-    return false;
+  public void modificarTipoIva(int codigo, Iva TipoIva) throws IvaInvalidoException, ErrorCodigoException {
+      getArticulo(codigo).setTipoIva(TipoIva);
   }
 }
