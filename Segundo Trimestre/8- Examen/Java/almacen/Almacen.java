@@ -20,11 +20,10 @@ public class Almacen {
    */
   public Articulo getArticulo(int codigo) throws ErrorCodigoException {
     try {
-      return arrayList.get(codigo);
+      return arrayList.get(arrayList.indexOf(new Articulo(codigo)));
     }catch(IndexOutOfBoundsException ioobe) {
       throw new ErrorCodigoException("ID Articulo inválido.");
     }
-    
   }
   
   /**
@@ -89,11 +88,7 @@ public class Almacen {
    * @throws ErrorCodigoException 
    */
   public void entradaMercancia(int codigo, int cantidadArticulos) throws ErrorStockException, ErrorCodigoException{
-        try {
-          arrayList.get(arrayList.indexOf(new Articulo(codigo))).incrementaStock(cantidadArticulos);
-        } catch (IndexOutOfBoundsException e) {
-         throw new ErrorCodigoException("El código no existe.");
-        }
+      getArticulo(codigo).incrementaStock(cantidadArticulos);
   }
   
   /**
@@ -102,13 +97,8 @@ public class Almacen {
    * @param cantidadArticulos Cantidad de articulos a eliminar
    * @return true si se ha modificado. false en otro caso
    */
-  public boolean salidaMercancia(int codigo, int cantidadArticulos)  throws ErrorStockException, ErrorCodigoException{
-      try {
-        arrayList.get(arrayList.indexOf(new Articulo(codigo))).decrementaStock(cantidadArticulos);
-        return true;
-      } catch (IndexOutOfBoundsException e) {
-        throw new ErrorCodigoException("El código no existe.");
-       }
+  public void salidaMercancia(int codigo, int cantidadArticulos)  throws ErrorStockException, ErrorCodigoException{
+        getArticulo(codigo).decrementaStock(cantidadArticulos);
       }
   
   /**

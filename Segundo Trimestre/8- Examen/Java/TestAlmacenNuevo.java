@@ -163,29 +163,23 @@ public class TestAlmacenNuevo {
   /**
    * Modificar el precio de compra
    * @param codigo
+   * @throws ErrorCodigoException 
    */
-  private static void modificarPrecioCompra(int codigo) {
+  private static void modificarPrecioCompra(int codigo) throws ErrorCodigoException {
     double precioCompra;
     precioCompra = Teclado.leerDouble("Introduzca el nuevo precio de compra del artículo: ");
-    try {
-      Almacen.modificarPrecioCompra(codigo, precioCompra);
-    } catch (ErrorCodigoException e) {
-      System.out.println(e.getMessage());
-    }
+    Almacen.modificarPrecioCompra(codigo, precioCompra);
   }
 
   /**
    * Modifica la descripción
    * @param codigo
+   * @throws ErrorCodigoException 
    */
-  private static void modificarDescripcion(int codigo) {
+  private static void modificarDescripcion(int codigo) throws ErrorCodigoException {
     String descripcion;
     descripcion = Teclado.leerString("Introduzca la nueva descripción del artículo: ");
-    try {
-      Almacen.modificarDescripcion(codigo, descripcion);
-    } catch (ErrorCodigoException e) {
-      System.out.println(e.getMessage());
-    }
+    Almacen.modificarDescripcion(codigo, descripcion);
   }
 
   /**
