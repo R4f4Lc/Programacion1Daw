@@ -11,14 +11,15 @@ rectángulo por la pantalla.
 
 @author: Rafael López
 """
+from builtins import ArithmeticError
 
 class Rectangulo():
     
     def __init__(self, ancho, alto):
         Rectangulo.__comprobarAncho(ancho)
         Rectangulo.__comprobarAlto(alto)
-        self.__ancho = ancho
-        self.__alto = alto
+        self.ancho = ancho
+        self.alto = alto
     
     @property
     def ancho(self):
@@ -40,14 +41,14 @@ class Rectangulo():
     @staticmethod
     def __comprobarAncho(ancho):
         if ancho <= 0 or ancho > 10:
-            raise TypeError("El ancho indicado es inválido.")
+            raise ArithmeticError("El valor indicado es inválido.")
     
     @staticmethod
     def __comprobarAlto(alto):
         if alto <= 0 or alto > 10:
-            raise TypeError("El alto indicado es inválido.")
+            raise ArithmeticError("El valor indicado es inválido.")
     
-    def pintarRectangulo(self):
+    def __str__(self):
         resultado=""
         for x in range(0,self.ancho):
             resultado += str("[]")
@@ -68,5 +69,8 @@ class Rectangulo():
 
     
 if __name__ == "__main__":
-    rectangulo = Rectangulo(int(input("Introduce el ancho:")),int(input("Introduce el alto:")))
-    print(rectangulo.pintarRectangulo())
+    try:
+        rectangulo = Rectangulo(int(input("Introduce el ancho:")),int(input("Introduce el alto:")))
+        print(rectangulo)
+    except ArithmeticError as e:
+        print(e)

@@ -6,39 +6,57 @@ la posibilidad de comparar objetos cuadrados entre sí.
 
 @author: Rafael López
 """
+from pywin.scintilla.document import CScintillaDocument
 
 class Cuadrado(Rectangulo):
     
     def __init__(self, lado):
         super().__init__(lado, lado)
-        self.lado = lado
         
     @property
     def lado(self):
-        return self.__lado
+        return self.ancho
     
     @lado.setter
     def lado(self, lado):
-        self.__lado = lado
+        self.__verifica_lado(lado)
+        self.ancho = lado
+        self.alto = lado
 
-    """
-    Método equals que compara los lados del cuadrado.
-    """
-    
-    def __eq__(self, comparacion):
-        if self.__lado == comparacion.__lado:
-            return "Los cuadrados son iguales."
+    """Sobrecarga del operador >"""
+    def __gt__(self, other):
+        if not isinstance(other, Cuadrado):
+            raise Exception
         else:
-            return "Los cuadrados son distintos."
+            return (self.lado) > (other.lado)
+        
+    """Sobrecarga del operador >="""
+    def __ge__(self, other):
+        if not isinstance(other, Cuadrado):
+            raise Exception
+        else:
+            return (self.lado) >= (other.lado)
+        
+    """Sobrecarga del operador =="""
+    def __eq__(self, other):
+        if not isinstance(other, Cuadrado):
+            raise Exception
+        else:
+            return (self.lado) == (other.lado)
     
 if __name__ == "__main__":
-    
-    cuadrado1 = Cuadrado(5)
-    cuadrado2 = Cuadrado(5)
-    print("Cuadrado 1:\n" + cuadrado1.pintarRectangulo() + "Cuadrado 2:\n" + cuadrado2.pintarRectangulo())
-    print("Cuadrado 1 y Cuadrado 2:" , cuadrado1 == cuadrado2)
-    cuadrado3 = Cuadrado(7)
-    cuadrado4 = Cuadrado(6)
-    print("Cuadrado 3:\n" + cuadrado3.pintarRectangulo() + "Cuadrado 4:\n" + cuadrado4.pintarRectangulo())
-    print("Cuadrado 3 y Cuadrado 4:" , cuadrado3 == cuadrado4)
+    try:
+        cuadrado1 = Cuadrado(5)
+        cuadrado2 = Cuadrado(5)
+        print("Cuadrado 1:\n" + str(cuadrado1) + "Cuadrado 2:\n" + str(cuadrado2))
+        print("Cuadrado 1 y Cuadrado 2:" , cuadrado1 == cuadrado2)
+        cuadrado3 = Cuadrado(7)
+        cuadrado4 = Cuadrado(6)
+        print("Cuadrado 3:\n" + str(cuadrado3) + "Cuadrado 4:\n" + str(cuadrado4))
+        print("Cuadrado 3 y Cuadrado 4:" , cuadrado3 == cuadrado4)
+        cuadrado6 = Cuadrado(12)
+    except ArithmeticError as e:
+        print(e)
+    except TypeError as e:
+        print(e)
     

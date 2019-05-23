@@ -7,7 +7,7 @@ package ejercicio2;
  * @author Rafael López
  *
  */
-public class Cuadrado extends Rectangulo {
+public class Cuadrado extends Rectangulo implements Comparable<Cuadrado>{
 
   /**
    * Constructor de la clase cuadrado que se extiende de 
@@ -16,5 +16,25 @@ public class Cuadrado extends Rectangulo {
    */
   public Cuadrado(int lado) {
     super(lado, lado);
+  }
+  
+  /**
+   * Devuelve el valor del lado que forma al cuadrado.
+   * 
+   * @return lado del cuadrado
+   */
+  public int getLado() {
+    return this.getAncho();
+  }
+
+  @Override
+  public int compareTo(Cuadrado o) {
+    if (this.getLado() < o.getLado()) {
+      return -1;
+    } else if (this.getLado() > o.getLado()) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 }
