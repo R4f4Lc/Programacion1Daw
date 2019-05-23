@@ -16,8 +16,6 @@ from builtins import ArithmeticError
 class Rectangulo():
     
     def __init__(self, ancho, alto):
-        Rectangulo.__comprobarAncho(ancho)
-        Rectangulo.__comprobarAlto(alto)
         self.ancho = ancho
         self.alto = alto
     

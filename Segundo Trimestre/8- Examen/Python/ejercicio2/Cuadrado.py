@@ -18,7 +18,6 @@ class Cuadrado(Rectangulo):
     
     @lado.setter
     def lado(self, lado):
-        self.__verifica_lado(lado)
         self.ancho = lado
         self.alto = lado
 
