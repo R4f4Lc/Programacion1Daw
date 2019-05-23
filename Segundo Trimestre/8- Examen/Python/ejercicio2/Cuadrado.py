@@ -6,7 +6,6 @@ la posibilidad de comparar objetos cuadrados entre sí.
 
 @author: Rafael López
 """
-from pywin.scintilla.document import CScintillaDocument
 
 class Cuadrado(Rectangulo):
     
@@ -57,6 +56,3 @@ if __name__ == "__main__":
         cuadrado6 = Cuadrado(12)
     except ArithmeticError as e:
         print(e)
-    except TypeError as e:
-        print(e)
-    
