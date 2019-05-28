@@ -40,5 +40,8 @@ Actualmente se encuentran disponibles los siguientes ejercicios:
 |Ejercicios con Ficheros |![img](http://i.imgur.com/VJ7IoXU.png) |
 |Examen 2º Trimestre |![img](http://i.imgur.com/VJ7IoXU.png) |
 |Ejercicios JSP |![img](http://i.imgur.com/VJ7IoXU.png) |
+|Ejercicios Entorno Gráfico |![img](http://i.imgur.com/VJ7IoXU.png) |
+|Examen 3º Trimestre |![img](http://i.imgur.com/VJ7IoXU.png) |
+
 
 [Twitter]: <https://twitter.com/RafaLpeC/>
